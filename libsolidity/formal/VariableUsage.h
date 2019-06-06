@@ -36,6 +36,7 @@ class VariableUsage: private ASTConstVisitor
 {
 public:
 	/// @param _outerCallstack the current callstack in the callers context.
+	/// TODO this should know whether BMC or Horn due to function inlining.
 	std::set<VariableDeclaration const*> touchedVariables(ASTNode const& _node, std::vector<CallableDeclaration const*> const& _outerCallstack);
 
 private:

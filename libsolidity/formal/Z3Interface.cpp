@@ -47,7 +47,14 @@ void Z3Interface::push()
 
 void Z3Interface::pop()
 {
-	m_solver.pop();
+	try
+	{
+		m_solver.pop();
+	}
+	catch(z3::exception _e)
+	{
+		solAssert(false, _e.msg());
+	}
 }
 
 void Z3Interface::declareVariable(string const& _name, Sort const& _sort)
